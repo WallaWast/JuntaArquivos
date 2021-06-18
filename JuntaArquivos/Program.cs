@@ -12,7 +12,7 @@ namespace JuntaArquivos
         {
             var dir = new DirectoryInfo(PASTA_ARQUIVO);
             string pastaNovoArquivo = Path.Combine(PASTA_ARQUIVO, "Agrupados");
-            string NomeArquivoLeitura = "Leitura_GrupoA" + DateTime.Now.Year.ToString()  + DateTime.Now.Month.ToString("D2") +  DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.fff").Replace("/", "_").Replace(" ", "_").Replace(":", "") ;
+            string NomeArquivoLeitura = "Leitura_GrupoA_202100" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.fff").Replace("/", "_").Replace(" ", "_").Replace(":", "") ;
 
             if (!Directory.Exists(pastaNovoArquivo))
                 Directory.CreateDirectory(pastaNovoArquivo);
@@ -25,7 +25,7 @@ namespace JuntaArquivos
 
             int cont = 1;
 
-            foreach (var arquivo in dir.GetFiles())
+            foreach (var arquivo in dir.GetFiles("Leitura_GrupoA*"))
             {
                 string textoArquivo = File.ReadAllText(arquivo.FullName);
 
